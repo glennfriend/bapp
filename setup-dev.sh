@@ -10,19 +10,29 @@ bash_app_install() {
         return
     fi
 
-    echo '---- bash app install ----'
-    echo
     APP_PATH=~/tools/bapp
-    APP_RESOURCE=~/.bapp
     mkdir -p                    ${APP_PATH}
-    mkdir -p                    ${APP_RESOURCE}
+    mkdir -p                    ~/.bapp
     git clone ${APP_REPOSITORY} ${APP_PATH}
     chmod +x                    ${APP_PATH}/src/bapp.sh
 
     echo '---- create /bin/bapp link ----'
     echo
-    sudo ln -sfn                ${APP_PATH}/src/bapp.sh  /bin/bapp
+    sudo ln -sfn                ${APP_PATH}/bapp.sh  /bin/bapp
 
+    echo '---- please append to your shell ----'
+    echo 'echo                                          >> ~/.zshrc'
+    echo 'echo "## bapp"                                >> ~/.zshrc'
+    echo 'echo "source ~/tools/bapp/auto-complete.sh"   >> ~/.zshrc'
+    echo 'echo                                          >> ~/.zshrc'
+    echo
+    echo 'echo                                          >> ~/.bashrc'
+    echo 'echo "## bapp"                                >> ~/.bashrc'
+    echo 'echo "source ~/tools/bapp/auto-complete.sh"   >> ~/.bashrc'
+    echo 'echo                                          >> ~/.bashrc'
 }
+
+echo '---- bash app install ----'
+echo
 
 bash_app_install 'is-dev'
