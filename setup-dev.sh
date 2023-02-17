@@ -10,12 +10,17 @@ bash_app_install() {
         return
     fi
 
+    echo '---- bash app install ----'
+    echo
     APP_PATH=~/tools/bapp
     APP_RESOURCE=~/.bapp
     mkdir -p                    ${APP_PATH}
     mkdir -p                    ${APP_RESOURCE}
     git clone ${APP_REPOSITORY} ${APP_PATH}
     chmod +x                    ${APP_PATH}/src/bapp.sh
+
+    echo '---- create /bin/bapp link ----'
+    echo
     sudo ln -sfn                ${APP_PATH}/src/bapp.sh  /bin/bapp
 
 }
