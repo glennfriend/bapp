@@ -14,7 +14,7 @@ bash_app_install() {
     mkdir -p                    ${APP_PATH}
     mkdir -p                    ~/.bapp
     git clone ${APP_REPOSITORY} ${APP_PATH}
-    chmod +x                    ${APP_PATH}/src/bapp.sh
+    chmod +x                    ${APP_PATH}/bapp.sh
 
     echo '---- create /bin/bapp link ----'
     echo
