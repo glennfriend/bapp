@@ -16,7 +16,7 @@ bash_app_install() {
     mkdir -p                    ${APP_RESOURCE}
     git clone ${APP_REPOSITORY} ${APP_PATH}
     chmod +x                    ${APP_PATH}/src/bapp.sh
-    ln -sfn                     ${APP_PATH}/src/bapp.sh  /bin/bapp
+    sudo ln -sfn                ${APP_PATH}/src/bapp.sh  /bin/bapp
 
 }
 
