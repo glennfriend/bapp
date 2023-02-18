@@ -1,17 +1,26 @@
 #!/usr/bin/env bash
+set -o nounset
+set -o pipefail
+if [[ "${TRACE-0}" == "1" ]]; then set -o xtrace; fi
 
+# dirname, readlink 不能在 WSL 使用, 所以不使用以下的指令
+#   -> echo dirname "$(readlink -f $0)"
+
+#
 CURRENT_PATH=$(pwd)
-TOOL_PATH="$(dirname "$(readlink -f $0)")"
+APP_PATH=~/tools/bapp
 
+if [[ ! -d ${APP_PATH} ]]; then
+    echo 'bapp not exists ! exit !'
+    exit 1
+fi
 
-cd ${TOOL_PATH}/src
+#
+cd ${APP_PATH}/src
 SCRIPT_FILE_LIST=$(find ./ -type f | sed -e "s/\.\///g" )
+echo ${SCRIPT_FILE_LIST}
 cd ${CURRENT_PATH}
 
-
-#SCRIPT_FILE_LIST=$(ls -R "${TOOL_PATH}/src/" | grep  '^[^\/]' )
-#find ${TOOL_PATH}/src  -type f | sed -e "s/${TOOL_PATH}//g" 
-
-
+#
 # complete -W "aaa bbb ccc" bapp
 complete -W "${SCRIPT_FILE_LIST}" bapp
