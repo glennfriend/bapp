@@ -47,3 +47,11 @@ source ${TARGET_FILE}
 #     可執行檔 sh, php, python, npm, yarn 
 #     帶有設定檔的軟體, 你如何方便備份並重用, 像 dotfile 那樣的方便?
 #     如果是帶有 bash 的, 你可能會加在 ~/.bashrc, 手動從裡面移除就好?
+#
+# 大部份安裝的 App 都是獨立的
+#       composer, nvm, npm, nginx
+#       安裝後, 它們會在自己決定的路徑上, 例如 /usr/local/bin/composer, ~/.nvm/path/bin/npm
+#
+# 少部份安裝的 App 是有自定義的內容
+#       檔案會存到 ~/.bapp
+#

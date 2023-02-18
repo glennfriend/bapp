@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -o nounset
+set -o pipefail
 
 sudo apt install -y unrar
 sudo apt install -y ffmpeg
