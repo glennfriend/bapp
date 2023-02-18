@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -o nounset
+# set -o nounset    # _zsh_autosuggest_highlight_apply:3: POSTDISPLAY: parameter not set
 set -o pipefail
 if [[ "${TRACE-0}" == "1" ]]; then set -o xtrace; fi
 
@@ -7,6 +7,7 @@ if [[ "${TRACE-0}" == "1" ]]; then set -o xtrace; fi
 #   -> echo dirname "$(readlink -f $0)"
 
 #
+DEBUG=false
 CURRENT_PATH=$(pwd)
 APP_PATH=~/tools/bapp
 
@@ -17,9 +18,15 @@ fi
 
 #
 cd ${APP_PATH}/src
-SCRIPT_FILE_LIST=$(find ./ -type f | sed -e "s/\.\///g" )
-echo ${SCRIPT_FILE_LIST}
+SCRIPT_FILE_LIST=$(find ./ -type f | sed -e "s/\.\///g")
 cd ${CURRENT_PATH}
+
+#
+if [[ "${DEBUG}" = 1 || "${DEBUG}" = true ]] then
+    echo ${SCRIPT_FILE_LIST}
+fi
+
+
 
 #
 # complete -W "aaa bbb ccc" bapp
